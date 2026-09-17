@@ -1,23 +1,194 @@
-const courses=[
-{id:'python',title:'Python Programming',category:'Programming',level:'Beginner',lessons:12,symbol:'Py',tone:'mint',desc:'Start from zero and build real Python projects with confidence.',playlist:'https://www.youtube.com/playlist?list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0'},
-{id:'web',title:'Web Development',category:'Web Development',level:'Beginner',lessons:18,symbol:'</>',tone:'pink',desc:'Learn HTML, CSS and JavaScript to create modern websites.',playlist:'https://www.youtube.com/playlist?list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i'},
-{id:'games',title:'Python Game Development',category:'Programming',level:'Intermediate',lessons:1,symbol:'🎮',tone:'yellow',desc:'Learn game development through a complete game-development lesson.',video:'https://www.youtube.com/embed/YBRlwCjLNMQ'},
-{id:'git',title:'Git & GitHub',category:'Developer Tools',level:'Beginner',lessons:8,symbol:'git',tone:'blue',desc:'Understand version control and publish your projects online.'},
-{id:'sql',title:'SQL Basics',category:'Data & AI',level:'Beginner',lessons:10,symbol:'SQL',tone:'mint',desc:'Learn databases, queries and the foundations of data.'},
-{id:'logic',title:'Programming Logic',category:'Programming',level:'Beginner',lessons:9,symbol:'{ }',tone:'pink',desc:'Build strong problem-solving skills before advanced coding.'}
+const courses = [
+  {
+    id: 'python',
+    title: 'Python Programming',
+    category: 'Programming',
+    level: 'Beginner',
+    lessons: 12,
+    symbol: 'Py',
+    tone: 'mint',
+    desc: 'Learn Python programming from the basics with beginner-friendly tutorials and practical coding projects.',
+    playlist: 'https://www.youtube.com/playlist?list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0'
+  },
+  {
+    id: 'web',
+    title: 'Web Development',
+    category: 'Web Development',
+    level: 'Beginner',
+    lessons: 18,
+    symbol: '</>',
+    tone: 'pink',
+    desc: 'Learn HTML, CSS and JavaScript to build modern websites through practical web development lessons.',
+    playlist: 'https://www.youtube.com/playlist?list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i'
+  },
+  {
+    id: 'games',
+    title: 'Python Game Development',
+    category: 'Programming',
+    level: 'Intermediate',
+    lessons: 1,
+    symbol: '🎮',
+    tone: 'yellow',
+    desc: 'Explore Python game development and learn programming concepts through a complete game project.',
+    video: 'https://www.youtube.com/embed/YBRlwCjLNMQ'
+  },
+  {
+    id: 'git',
+    title: 'Git & GitHub',
+    category: 'Developer Tools',
+    level: 'Beginner',
+    lessons: 8,
+    symbol: 'git',
+    tone: 'blue',
+    desc: 'Learn Git and GitHub basics, version control, and how to publish your coding projects online.'
+  },
+  {
+    id: 'sql',
+    title: 'SQL Basics',
+    category: 'Data & AI',
+    level: 'Beginner',
+    lessons: 10,
+    symbol: 'SQL',
+    tone: 'mint',
+    desc: 'Learn SQL basics, database queries, and the foundations of working with data.'
+  },
+  {
+    id: 'logic',
+    title: 'Programming Logic',
+    category: 'Programming',
+    level: 'Beginner',
+    lessons: 9,
+    symbol: '{ }',
+    tone: 'pink',
+    desc: 'Build strong programming logic and problem-solving skills before moving to advanced coding.'
+  }
 ];
-let state={page:'courses',user:null,selected:null,query:'',category:'All courses',theme:'light'};
+
+let state = {
+  page: 'courses',
+  user: null,
+  selected: null,
+  query: '',
+  category: 'All courses',
+  theme: 'light'
+};
+
 // Make state available to GitHub Pages inline event handlers.
 window.state = state;
-const $=s=>document.querySelector(s);
-function brand(){return `<div class="brand"><div class="brandmark">&lt;/&gt;</div><div>CodewithHafiz<small>LEARN. BUILD. GROW.</small></div></div>`}
-function header(){return `<header class="topbar">${brand()}<nav class="nav"><button class="${state.page==='courses'?'active':''}" onclick="go('courses')">Courses</button><button class="${state.page==='tutorials'?'active':''}" onclick="go('tutorials')">Tutorials</button><button class="${state.page==='learning'?'active':''}" onclick="go('learning')">My learning</button><button class="${state.page==='setup'?'active':''}" onclick="go('setup')">Downloads</button></nav><div class="top-actions"><button class="ghost" onclick="toggleTheme()">${state.theme==='light'?'☾':'☀'} ${state.theme==='light'?'Dark':'Light'}</button>${state.user?`<button class="ghost" onclick="go('dashboard')">Dashboard ↗</button><div class="avatar">${state.user[0].toUpperCase()}</div><button class="ghost" onclick="logout()">↪</button>`:`<button class="pill" onclick="go('login')">Sign in</button>`}</div></header>`}
-function home(){let list=courses.filter(c=>(state.category==='All courses'||c.category===state.category)&&(`${c.title} ${c.desc}`.toLowerCase().includes(state.query.toLowerCase())));return `${header()}<main class="container"><section class="hero"><div><div class="eyebrow">KEEP YOUR CURIOSITY. BUILD YOUR SKILLS.</div><h1>Your next chapter<br>starts with <span>code.</span></h1><p>Practical courses. Clear explanations. Real progress.<br>Start from scratch or pick up where you left off.</p></div><div class="code-card"><div class="code-head"><span>your_journey.py</span><span>⌁</span></div><div class="code-body"><div class="comment"># A little progress, every day</div><br><span class="green">while</span> curious:<br>&nbsp;&nbsp;learn()<br>&nbsp;&nbsp;build()<br>&nbsp;&nbsp;<span class="green">grow()</span><br><br><span class="comment"># Your future is a work in progress.</span></div></div></section><div class="benefits"><span>${courses.length} free courses</span><span>Learn by doing</span><span>Beginner friendly</span><span>Go at your own pace</span></div><section><div class="section-head"><div><div class="eyebrow">FIND YOUR STARTING POINT</div><h2>Explore courses</h2></div><input class="search" placeholder="⌕  What do you want to learn?" value="${state.query}" oninput="state.query=this.value;render()"></div><div class="filters">${['All courses','Programming','Web Development','DevOps','Developer Tools','Data & AI'].map(x=>`<button class="filter ${state.category===x?'active':''}" onclick="state.category='${x}';render()">${x}</button>`).join('')}</div><div class="course-grid">${list.map(courseCard).join('')}</div></section><section class="setup"><div><div class="eyebrow">READY TO START</div><h2>Download your coding tools.</h2><p>Install Python, Visual Studio Code, and the official Python extension to begin coding.</p><div class="download-mini-grid"><a class="download-mini" href="https://www.python.org/downloads/" target="_blank" rel="noopener"><b>🐍 Python</b><span>Download Python ↗</span></a><a class="download-mini" href="https://code.visualstudio.com/download" target="_blank" rel="noopener"><b>💻 VS Code</b><span>Download VS Code ↗</span></a><a class="download-mini" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python" target="_blank" rel="noopener"><b>🧩 Python Extension</b><span>Install extension ↗</span></a></div></div><button onclick="go('setup')">Open full setup guide →</button></section></main>`}
-function courseCard(c){return `<article class="course" onclick="openCourse('${c.id}')"><div class="cover ${c.tone}"><small>CODEWITHHAFIZ</small><div class="symbol">${c.symbol}</div></div><div class="course-body"><h3>${c.title}</h3><p>${c.desc}</p><div class="meta"><span>${c.category}</span><span>${c.lessons} lessons · ${c.level}</span></div><button class="open-course">View course →</button></div></article>`}
-function coursePage(){let c=state.selected||courses[0];let names=['Introduction','Getting started','Core concepts','Practice project','Build something','Next steps'];let total=Math.min(c.lessons,6);let embed=c.playlist?`https://www.youtube.com/embed/videoseries?list=${c.playlist.split('list=')[1]}`:(c.video||'');return `${header()}<div class="course-page"><aside class="side">${brand()}<div class="side-title">Course contents</div>${Array.from({length:total},(_,i)=>`<div class="side-item ${i===0?'active':''}" onclick="selectLesson(${i})"><span>${i+1}. ${names[i]||'Lesson '+(i+1)}</span><span>›</span></div>`).join('')}</aside><main class="mainpanel"><div class="crumb">Courses / ${c.title}</div><div class="lesson-layout"><div class="lesson-list"><h3>${c.title}</h3>${Array.from({length:total},(_,i)=>`<div class="lesson ${i===0?'active':''}" onclick="selectLesson(${i})"><span class="lesson-num">${i+1}</span><span>${names[i]||'Lesson '+(i+1)}</span></div>`).join('')}</div><div class="lesson-content"><div class="video">${embed?`<iframe width="100%" height="100%" src="${embed}" title="${c.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`:`<div class="video-empty">Video link will appear here.</div>`}</div><h1>${c.title}: ${names[0]}</h1><p>${c.desc} This course is connected to the provided learning source.</p><div class="lesson-actions">${c.playlist?`<a class="primary" href="${c.playlist}" target="_blank" rel="noopener">Open full playlist ↗</a>`:''}<button class="secondary" onclick="alert('Add your PDF/notes link in app.js when ready.')">Practice slides ↗</button></div></div></div></main></div>`}
-function login(){return `${header()}<div class="login-wrap"><div class="login-card"><div class="eyebrow">WELCOME BACK</div><h1>Sign in to learn.</h1><p style="color:var(--muted);font-size:13px">Continue your coding journey with CodewithHafiz.</p><div class="field"><label>Email</label><input id="email" type="email" placeholder="you@example.com"></div><div class="field"><label>Password</label><input id="password" type="password" placeholder="Your password"></div><button class="primary" style="width:100%" onclick="signin()">Sign in →</button><p style="font-size:12px;color:var(--muted);text-align:center;margin-top:20px">Demo: student@example.com / student123</p></div></div>`}
-function dashboard(){return `${header()}<div class="dash-layout"><aside class="dash-side">${brand()}<div class="side-title">Workspace</div><div class="side-item active">▦ Overview</div><div class="side-item">▤ Courses <span>${courses.length}</span></div><div class="side-item">▧ Tutorials <span>4</span></div><div class="side-item">♙ Users</div><div class="side-title">Account</div><div class="side-item">⚙ Account</div></aside><main class="dash-main"><div class="dash-top"><div><div class="eyebrow">YOUR ACADEMY, AT A GLANCE</div><h1>Welcome back, ${state.user||'Hafiz'}.</h1><div style="color:var(--muted);font-size:13px">A little teaching today. A big difference tomorrow.</div></div><button class="new-btn" onclick="alert('Course creator coming next. Add course data in app.js for now.')">＋ New course</button></div><div class="stats"><div class="stat"><small>Total courses</small><strong>${courses.length}</strong><small>published courses</small></div><div class="stat"><small>Tutorials</small><strong>4</strong><small>published</small></div><div class="stat"><small>Registered learners</small><strong>0</strong><small>signed-in student accounts</small></div><div class="stat"><small>Course enrolments</small><strong>0</strong><small>across all courses</small></div></div><div class="dash-banner"><div><div class="eyebrow">MADE FOR THE NEXT GENERATION OF BUILDERS</div><h2>Your knowledge. Their next breakthrough.</h2><div style="color:var(--muted);font-size:12px">Bring your next idea to life with a new course or tutorial.</div></div><button class="primary" onclick="go('courses')">View website →</button></div><div class="table-card"><div class="table-title">Your courses <span style="color:var(--muted);font-size:11px">${courses.length}</span></div><div class="table-row header"><span>Course</span><span>Status</span><span>Lessons</span><span>Category</span></div>${courses.map(c=>`<div class="table-row"><span><b>${c.title}</b></span><span style="color:var(--green)">● Published</span><span>${c.lessons}</span><span>${c.category}</span></div>`).join('')}</div></main></div>`}
-function setup(){return `${header()}<main class="container"><div class="eyebrow">START CODING</div><h1 style="font-size:38px">Your coding setup, made simple.</h1><p style="color:var(--muted);max-width:600px">Use these official links to install the tools required for CodewithHafiz lessons.</p><div class="course-grid" style="margin-top:28px"><article class="course"><div class="cover mint"><div class="symbol">Py</div></div><div class="course-body"><h3>Download Python</h3><p>Install Python for Windows from the official Python website.</p><a class="open-course" style="display:block;text-align:center;text-decoration:none" href="https://www.python.org/downloads/" target="_blank">Open Python download ↗</a></div></article><article class="course"><div class="cover blue"><div class="symbol">&lt;/&gt;</div></div><div class="course-body"><h3>Download VS Code</h3><p>Get the official Visual Studio Code editor for your computer.</p><a class="open-course" style="display:block;text-align:center;text-decoration:none" href="https://code.visualstudio.com/download" target="_blank">Open VS Code download ↗</a></div></article><article class="course"><div class="cover pink"><div class="symbol">✦</div></div><div class="course-body"><h3>Python Extension</h3><p>Install Microsoft’s Python extension inside VS Code.</p><a class="open-course" style="display:block;text-align:center;text-decoration:none" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python" target="_blank">Open extension page ↗</a></div></article></div></main>`}
-function go(p){state.page=p;render()}function openCourse(id){state.selected=courses.find(c=>c.id===id);state.page='course';render()}function selectLesson(){alert('Lesson selected. Add your lesson video and slides links in app.js.')}function signin(){let e=$('#email').value,p=$('#password').value;if((e==='student@example.com'&&p==='student123')||(e==='admin@codewithhafiz.com'&&p==='Hafiz@123')){state.user=e.split('@')[0];state.page='courses';render()}else alert('Demo login: student@example.com / student123')}function logout(){state.user=null;state.page='courses';render()}function toggleTheme(){state.theme=state.theme==='light'?'dark':'light';document.documentElement.style.setProperty('--bg',state.theme==='dark'?'#111916':'#f7f9f8');document.documentElement.style.setProperty('--surface',state.theme==='dark'?'#19231f':'#fff');document.documentElement.style.setProperty('--text',state.theme==='dark'?'#e7f0eb':'#17211d');render()}function render(){const app=document.getElementById('app'); if(!app) return; let html=state.page==='course'?coursePage():state.page==='login'?login():state.page==='dashboard'?dashboard():state.page==='setup'?setup():home(); app.innerHTML=html;}
-window.go=go; window.openCourse=openCourse; window.selectLesson=selectLesson; window.signin=signin; window.logout=logout; window.toggleTheme=toggleTheme; window.render=render;
-if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',render);}else{render();}
+
+const $ = s => document.querySelector(s);
+
+function brand() {
+  return `<div class="brand"><div class="brandmark">&lt;/&gt;</div><div>CodewithHafiz<small>LEARN. BUILD. GROW.</small></div></div>`;
+}
+
+function header() {
+  return `<header class="topbar">${brand()}<nav class="nav"><button class="${state.page === 'courses' ? 'active' : ''}" onclick="go('courses')">Courses</button><button class="${state.page === 'tutorials' ? 'active' : ''}" onclick="go('tutorials')">Tutorials</button><button class="${state.page === 'learning' ? 'active' : ''}" onclick="go('learning')">My learning</button><button class="${state.page === 'setup' ? 'active' : ''}" onclick="go('setup')">Downloads</button></nav><div class="top-actions"><button class="ghost" onclick="toggleTheme()">${state.theme === 'light' ? '☾' : '☀'} ${state.theme === 'light' ? 'Dark' : 'Light'}</button>${state.user ? `<button class="ghost" onclick="go('dashboard')">Dashboard ↗</button><div class="avatar">${state.user[0].toUpperCase()}</div><button class="ghost" onclick="logout()">↪</button>` : `<button class="pill" onclick="go('login')">Sign in</button>`}</div></header>`;
+}
+
+function home() {
+  let list = courses.filter(c =>
+    (state.category === 'All courses' || c.category === state.category) &&
+    (`${c.title} ${c.desc}`.toLowerCase().includes(state.query.toLowerCase()))
+  );
+
+  return `${header()}<main class="container"><section class="hero"><div><div class="eyebrow">FREE CODING EDUCATION. BUILD YOUR SKILLS.</div><h1>Learn to code.<br>Build your <span>future.</span></h1><p>Learn Python programming, web development, HTML, CSS, JavaScript, Git, GitHub, SQL, and programming logic through free beginner-friendly tutorials and practical coding projects.</p></div><div class="code-card"><div class="code-head"><span>your_journey.py</span><span>⌁</span></div><div class="code-body"><div class="comment"># A little progress, every day</div><br><span class="green">while</span> curious:<br>&nbsp;&nbsp;learn()<br>&nbsp;&nbsp;build()<br>&nbsp;&nbsp;<span class="green">grow()</span><br><br><span class="comment"># Your future is a work in progress.</span></div></div></section><div class="benefits"><span>${courses.length} free coding courses</span><span>Learn by doing</span><span>Beginner friendly</span><span>Go at your own pace</span></div><section><div class="section-head"><div><div class="eyebrow">PYTHON, WEB DEVELOPMENT & MORE</div><h2>Explore free coding courses</h2></div><input class="search" placeholder="⌕  What do you want to learn?" value="${state.query}" oninput="state.query=this.value;render()"></div><div class="filters">${['All courses', 'Programming', 'Web Development', 'DevOps', 'Developer Tools', 'Data & AI'].map(x => `<button class="filter ${state.category === x ? 'active' : ''}" onclick="state.category='${x}';render()">${x}</button>`).join('')}</div><div class="course-grid">${list.map(courseCard).join('')}</div></section><section class="setup"><div><div class="eyebrow">READY TO START CODING</div><h2>Download your coding tools.</h2><p>Install Python, Visual Studio Code, and the official Python extension to begin coding.</p><div class="download-mini-grid"><a class="download-mini" href="https://www.python.org/downloads/" target="_blank" rel="noopener"><b>🐍 Python</b><span>Download Python ↗</span></a><a class="download-mini" href="https://code.visualstudio.com/download" target="_blank" rel="noopener"><b>💻 VS Code</b><span>Download VS Code ↗</span></a><a class="download-mini" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python" target="_blank" rel="noopener"><b>🧩 Python Extension</b><span>Install extension ↗</span></a></div></div><button onclick="go('setup')">Open full setup guide →</button></section></main>`;
+}
+
+function courseCard(c) {
+  return `<article class="course" onclick="openCourse('${c.id}')"><div class="cover ${c.tone}"><small>CODEWITHHAFIZ</small><div class="symbol">${c.symbol}</div></div><div class="course-body"><h3>${c.title}</h3><p>${c.desc}</p><div class="meta"><span>${c.category}</span><span>${c.lessons} lessons · ${c.level}</span></div><button class="open-course">View course →</button></div></article>`;
+}
+
+function coursePage() {
+  let c = state.selected || courses[0];
+  let names = ['Introduction', 'Getting started', 'Core concepts', 'Practice project', 'Build something', 'Next steps'];
+  let total = Math.min(c.lessons, 6);
+  let embed = c.playlist ? `https://www.youtube.com/embed/videoseries?list=${c.playlist.split('list=')[1]}` : (c.video || '');
+
+  return `${header()}<div class="course-page"><aside class="side">${brand()}<div class="side-title">Course contents</div>${Array.from({ length: total }, (_, i) => `<div class="side-item ${i === 0 ? 'active' : ''}" onclick="selectLesson(${i})"><span>${i + 1}. ${names[i] || 'Lesson ' + (i + 1)}</span><span>›</span></div>`).join('')}</aside><main class="mainpanel"><div class="crumb">Courses / ${c.title}</div><div class="lesson-layout"><div class="lesson-list"><h3>${c.title}</h3>${Array.from({ length: total }, (_, i) => `<div class="lesson ${i === 0 ? 'active' : ''}" onclick="selectLesson(${i})"><span class="lesson-num">${i + 1}</span><span>${names[i] || 'Lesson ' + (i + 1)}</span></div>`).join('')}</div><div class="lesson-content"><div class="video">${embed ? `<iframe width="100%" height="100%" src="${embed}" title="${c.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>` : `<div class="video-empty">Video link will appear here.</div>`}</div><h1>${c.title}: ${names[0]}</h1><p>${c.desc} This course is connected to the provided learning source.</p><div class="lesson-actions">${c.playlist ? `<a class="primary" href="${c.playlist}" target="_blank" rel="noopener">Open full playlist ↗</a>` : ''}<button class="secondary" onclick="alert('Add your PDF/notes link in app.js when ready.')">Practice slides ↗</button></div></div></div></main></div>`;
+}
+
+function login() {
+  return `${header()}<div class="login-wrap"><div class="login-card"><div class="eyebrow">WELCOME BACK</div><h1>Sign in to learn.</h1><p style="color:var(--muted);font-size:13px">Continue your coding journey with CodewithHafiz.</p><div class="field"><label>Email</label><input id="email" type="email" placeholder="you@example.com"></div><div class="field"><label>Password</label><input id="password" type="password" placeholder="Your password"></div><button class="primary" style="width:100%" onclick="signin()">Sign in →</button><p style="font-size:12px;color:var(--muted);text-align:center;margin-top:20px">Demo: student@example.com / student123</p></div></div>`;
+}
+
+function dashboard() {
+  return `${header()}<div class="dash-layout"><aside class="dash-side">${brand()}<div class="side-title">Workspace</div><div class="side-item active">▦ Overview</div><div class="side-item">▤ Courses <span>${courses.length}</span></div><div class="side-item">▧ Tutorials <span>4</span></div><div class="side-item">♙ Users</div><div class="side-title">Account</div><div class="side-item">⚙ Account</div></aside><main class="dash-main"><div class="dash-top"><div><div class="eyebrow">YOUR ACADEMY, AT A GLANCE</div><h1>Welcome back, ${state.user || 'Hafiz'}.</h1><div style="color:var(--muted);font-size:13px">A little teaching today. A big difference tomorrow.</div></div><button class="new-btn" onclick="alert('Course creator coming next. Add course data in app.js for now.')">＋ New course</button></div><div class="stats"><div class="stat"><small>Total courses</small><strong>${courses.length}</strong><small>published courses</small></div><div class="stat"><small>Tutorials</small><strong>4</strong><small>published</small></div><div class="stat"><small>Registered learners</small><strong>0</strong><small>signed-in student accounts</small></div><div class="stat"><small>Course enrolments</small><strong>0</strong><small>across all courses</small></div></div><div class="dash-banner"><div><div class="eyebrow">MADE FOR THE NEXT GENERATION OF BUILDERS</div><h2>Your knowledge. Their next breakthrough.</h2><div style="color:var(--muted);font-size:12px">Bring your next idea to life with a new course or tutorial.</div></div><button class="primary" onclick="go('courses')">View website →</button></div><div class="table-card"><div class="table-title">Your courses <span style="color:var(--muted);font-size:11px">${courses.length}</span></div><div class="table-row header"><span>Course</span><span>Status</span><span>Lessons</span><span>Category</span></div>${courses.map(c => `<div class="table-row"><span><b>${c.title}</b></span><span style="color:var(--green)">● Published</span><span>${c.lessons}</span><span>${c.category}</span></div>`).join('')}</div></main></div>`;
+}
+
+function setup() {
+  return `${header()}<main class="container"><div class="eyebrow">START CODING</div><h1 style="font-size:38px">Your coding setup, made simple.</h1><p style="color:var(--muted);max-width:600px">Use these official links to install the tools required for CodewithHafiz lessons.</p><div class="course-grid" style="margin-top:28px"><article class="course"><div class="cover mint"><div class="symbol">Py</div></div><div class="course-body"><h3>Download Python</h3><p>Install Python for Windows from the official Python website.</p><a class="open-course" style="display:block;text-align:center;text-decoration:none" href="https://www.python.org/downloads/" target="_blank">Open Python download ↗</a></div></article><article class="course"><div class="cover blue"><div class="symbol">&lt;/&gt;</div></div><div class="course-body"><h3>Download VS Code</h3><p>Get the official Visual Studio Code editor for your computer.</p><a class="open-course" style="display:block;text-align:center;text-decoration:none" href="https://code.visualstudio.com/download" target="_blank">Open VS Code download ↗</a></div></article><article class="course"><div class="cover pink"><div class="symbol">✦</div></div><div class="course-body"><h3>Python Extension</h3><p>Install Microsoft’s Python extension inside VS Code.</p><a class="open-course" style="display:block;text-align:center;text-decoration:none" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python" target="_blank">Open extension page ↗</a></div></article></div></main>`;
+}
+
+function go(p) {
+  state.page = p;
+  render();
+}
+
+function openCourse(id) {
+  state.selected = courses.find(c => c.id === id);
+  state.page = 'course';
+  render();
+}
+
+function selectLesson() {
+  alert('Lesson selected. Add your lesson video and slides links in app.js.');
+}
+
+function signin() {
+  let e = $('#email').value;
+  let p = $('#password').value;
+
+  if (
+    (e === 'student@example.com' && p === 'student123') ||
+    (e === 'admin@codewithhafiz.com' && p === 'Hafiz@123')
+  ) {
+    state.user = e.split('@')[0];
+    state.page = 'courses';
+    render();
+  } else {
+    alert('Demo login: student@example.com / student123');
+  }
+}
+
+function logout() {
+  state.user = null;
+  state.page = 'courses';
+  render();
+}
+
+function toggleTheme() {
+  state.theme = state.theme === 'light' ? 'dark' : 'light';
+  document.documentElement.style.setProperty('--bg', state.theme === 'dark' ? '#111916' : '#f7f9f8');
+  document.documentElement.style.setProperty('--surface', state.theme === 'dark' ? '#19231f' : '#fff');
+  document.documentElement.style.setProperty('--text', state.theme === 'dark' ? '#e7f0eb' : '#17211d');
+  render();
+}
+
+function render() {
+  const app = document.getElementById('app');
+  if (!app) return;
+
+  let html =
+    state.page === 'course' ? coursePage() :
+    state.page === 'login' ? login() :
+    state.page === 'dashboard' ? dashboard() :
+    state.page === 'setup' ? setup() :
+    home();
+
+  app.innerHTML = html;
+}
+
+window.go = go;
+window.openCourse = openCourse;
+window.selectLesson = selectLesson;
+window.signin = signin;
+window.logout = logout;
+window.toggleTheme = toggleTheme;
+window.render = render;
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', render);
+} else {
+  render();
+}
