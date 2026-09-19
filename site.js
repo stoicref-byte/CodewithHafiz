@@ -6,6 +6,7 @@ const courses=[
 {id:'sql',title:'SQL Basics',category:'Data & AI',level:'Beginner',lessons:10,symbol:'SQL',tone:'mint',desc:'Learn databases, queries and the foundations of data.'},
 {id:'logic',title:'Programming Logic',category:'Programming',level:'Beginner',lessons:9,symbol:'{ }',tone:'pink',desc:'Build strong problem-solving skills before advanced coding.'}
 ];
+const pythonLessons=[{"no": "01", "title": "Python Introduction", "desc": "What Python is, where it is used, and how a Python program runs.", "code": "print(\"Hello, CodewithHafiz!\")"}, {"no": "02", "title": "Variables and Data Types", "desc": "Learn variables, strings, integers, floats and booleans.", "code": "name = \"Hafiz\"\nage = 18\nheight = 5.8\nis_student = True\n\nprint(name, age, height, is_student)"}, {"no": "03", "title": "Input and Output", "desc": "Take information from a user and display useful output.", "code": "name = input(\"Enter your name: \")\nprint(\"Welcome,\", name)"}, {"no": "04", "title": "Operators", "desc": "Use arithmetic, comparison and logical operators.", "code": "a = 10\nb = 3\n\nprint(a + b)\nprint(a * b)\nprint(a > b)\nprint(a > 5 and b < 5)"}, {"no": "05", "title": "Strings", "desc": "Work with string indexing, slicing and common string methods.", "code": "text = \"CodewithHafiz\"\n\nprint(text[0])\nprint(text[0:4])\nprint(text.upper())\nprint(text.replace(\"Hafiz\", \"Python\"))"}, {"no": "06", "title": "Conditional Statements", "desc": "Make decisions with if, elif and else.", "code": "marks = 82\n\nif marks >= 80:\n    print(\"Excellent\")\nelif marks >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Try again\")"}, {"no": "07", "title": "For Loops", "desc": "Repeat a task over a sequence with for loops.", "code": "for number in range(1, 6):\n    print(\"Number:\", number)"}, {"no": "08", "title": "While Loops", "desc": "Repeat code while a condition remains true.", "code": "count = 1\n\nwhile count <= 5:\n    print(count)\n    count += 1"}, {"no": "09", "title": "Break, Continue and Pass", "desc": "Control how loops behave.", "code": "for number in range(1, 8):\n    if number == 4:\n        continue\n    print(number)"}, {"no": "10", "title": "Lists", "desc": "Store and modify collections of values.", "code": "fruits = [\"apple\", \"banana\", \"mango\"]\nfruits.append(\"orange\")\n\nprint(fruits)\nprint(fruits[1])"}, {"no": "11", "title": "Tuples", "desc": "Use ordered, immutable collections.", "code": "point = (10, 20)\nx, y = point\n\nprint(x)\nprint(y)"}, {"no": "12", "title": "Sets", "desc": "Store unique values and perform set operations.", "code": "numbers = {1, 2, 2, 3, 4}\nprint(numbers)\n\na = {1, 2, 3}\nb = {3, 4, 5}\nprint(a | b)\nprint(a & b)"}, {"no": "13", "title": "Dictionaries", "desc": "Store data as key-value pairs.", "code": "student = {\n    \"name\": \"Hafiz\",\n    \"age\": 18,\n    \"course\": \"Python\"\n}\n\nprint(student[\"name\"])\nstudent[\"age\"] = 19\nprint(student)"}, {"no": "14", "title": "Functions", "desc": "Create reusable blocks of code with parameters and return values.", "code": "def add(a, b):\n    return a + b\n\nresult = add(7, 5)\nprint(result)"}, {"no": "15", "title": "Scope and Recursion", "desc": "Understand local/global scope and the idea of recursive functions.", "code": "def factorial(n):\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(5))"}, {"no": "16", "title": "List Comprehensions", "desc": "Build lists concisely from existing sequences.", "code": "squares = [n * n for n in range(1, 6)]\neven = [n for n in range(10) if n % 2 == 0]\n\nprint(squares)\nprint(even)"}, {"no": "17", "title": "Modules and Packages", "desc": "Organize programs and use Python's standard library.", "code": "import math\n\nprint(math.sqrt(81))\nprint(math.pi)"}, {"no": "18", "title": "File Handling", "desc": "Read from and write to text files.", "code": "with open(\"example.txt\", \"w\") as file:\n    file.write(\"Hello from Python!\")\n\nwith open(\"example.txt\", \"r\") as file:\n    print(file.read())"}, {"no": "19", "title": "Exception Handling", "desc": "Handle errors safely with try, except, else and finally.", "code": "try:\n    number = int(input(\"Enter a number: \"))\n    print(100 / number)\nexcept ValueError:\n    print(\"Please enter a valid integer.\")\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero.\")"}, {"no": "20", "title": "Object-Oriented Programming", "desc": "Understand classes, objects, attributes and methods.", "code": "class Student:\n    def __init__(self, name):\n        self.name = name\n\n    def introduce(self):\n        print(\"I am\", self.name)\n\nstudent = Student(\"Hafiz\")\nstudent.introduce()"}, {"no": "21", "title": "Inheritance and Polymorphism", "desc": "Build classes that reuse and customize behavior.", "code": "class Animal:\n    def speak(self):\n        print(\"Some sound\")\n\nclass Dog(Animal):\n    def speak(self):\n        print(\"Woof\")\n\npet = Dog()\npet.speak()"}, {"no": "22", "title": "Iterators and Generators", "desc": "Process values lazily with iterators and yield.", "code": "def count_up_to(limit):\n    number = 1\n    while number <= limit:\n        yield number\n        number += 1\n\nfor value in count_up_to(5):\n    print(value)"}, {"no": "23", "title": "Decorators", "desc": "Wrap functions to add reusable behavior.", "code": "def log_call(function):\n    def wrapper():\n        print(\"Function is starting\")\n        function()\n        print(\"Function is finished\")\n    return wrapper\n\n@log_call\ndef hello():\n    print(\"Hello!\")\n\nhello()"}, {"no": "24", "title": "Lambda, Map and Filter", "desc": "Use functional tools for concise data processing.", "code": "numbers = [1, 2, 3, 4, 5]\n\nsquares = list(map(lambda n: n * n, numbers))\nevens = list(filter(lambda n: n % 2 == 0, numbers))\n\nprint(squares)\nprint(evens)"}, {"no": "25", "title": "Working with JSON", "desc": "Save and exchange structured data with JSON.", "code": "import json\n\nstudent = {\"name\": \"Hafiz\", \"age\": 18}\ntext = json.dumps(student)\nprint(text)\n\ndata = json.loads(text)\nprint(data[\"name\"])"}, {"no": "26", "title": "Regular Expressions", "desc": "Search and validate text patterns with the re module.", "code": "import re\n\ntext = \"Contact: hafiz@example.com\"\nmatch = re.search(r\"[\\w.-]+@[\\w.-]+\", text)\n\nif match:\n    print(match.group())"}, {"no": "27", "title": "Virtual Environments and pip", "desc": "Understand package installation and isolated Python environments.", "code": "# Typical terminal commands:\n# python -m venv .venv\n# .venv\\Scripts\\activate\n# python -m pip install requests\n\nprint(\"Use virtual environments to keep project dependencies isolated.\")"}, {"no": "28", "title": "APIs and HTTP Requests", "desc": "Understand how Python programs communicate with web APIs.", "code": "# Install first: python -m pip install requests\n\nimport requests\n\nresponse = requests.get(\"https://api.github.com\", timeout=10)\nprint(response.status_code)"}, {"no": "29", "title": "Databases with SQLite", "desc": "Store application data in a local SQLite database.", "code": "import sqlite3\n\nconnection = sqlite3.connect(\"school.db\")\ncursor = connection.cursor()\n\ncursor.execute(\"CREATE TABLE IF NOT EXISTS students (name TEXT, age INTEGER)\")\ncursor.execute(\"INSERT INTO students VALUES (?, ?)\", (\"Hafiz\", 18))\nconnection.commit()\n\nfor row in cursor.execute(\"SELECT * FROM students\"):\n    print(row)\n\nconnection.close()"}, {"no": "30", "title": "Testing with unittest", "desc": "Write automated tests for your Python code.", "code": "import unittest\n\ndef add(a, b):\n    return a + b\n\nclass TestMath(unittest.TestCase):\n    def test_add(self):\n        self.assertEqual(add(2, 3), 5)\n\nif __name__ == \"__main__\":\n    unittest.main()"}, {"no": "31", "title": "Type Hints and Dataclasses", "desc": "Make larger Python programs clearer and easier to maintain.", "code": "from dataclasses import dataclass\n\n@dataclass\nclass User:\n    name: str\n    age: int\n\ndef welcome(user: User) -> str:\n    return f\"Welcome, {user.name}\"\n\nprint(welcome(User(\"Hafiz\", 18)))"}, {"no": "32", "title": "Advanced Python Project Structure", "desc": "Bring the concepts together into a clean, maintainable project.", "code": "# Example structure:\n# my_project/\n#   main.py\n#   app/\n#     __init__.py\n#     models.py\n#     utils.py\n#   tests/\n#     test_app.py\n#   requirements.txt\n\ndef main():\n    print(\"Build projects with small, reusable modules.\")\n\nif __name__ == \"__main__\":\n    main()"}];
 let state={page:'courses',user:null,selected:null,query:'',category:'All courses',theme:'light'};
 let labFiles = loadLabFiles();
 let labCurrent = 'main.py';
@@ -195,14 +196,13 @@ async function labRun(){
     if(ext==='py'){labOutput=await runPythonInBrowser(code);}
     else if(ext==='js'){labOutput=await runJavaScriptInBrowser(code);}
     else if(ext==='html'||ext==='htm'||ext==='css'){
-      labOutput='Web project preview updated below. Open index.html to preview the full page.';
+      labOutput='HTML/CSS code is ready. The white preview panel has been removed; use the downloaded project or open index.html in your browser to view the page.';
       setTimeout(runWebPreview,50);
     }else{
       labOutput='This file type needs a compiler/runtime on a server. The Code Lab interface is ready for cloud execution, but this GitHub Pages-only version cannot safely compile native languages by itself.';
     }
   }catch(e){labOutput='Run error: '+(e.message||e);}
   labBusy=false;render();
-  if(['html','htm','css'].includes(labExt(labCurrent)))setTimeout(runWebPreview,50);
 }
 function codeLab(){
   const files=Object.keys(labFiles);
@@ -212,7 +212,7 @@ function codeLab(){
   return `${header()}<main class="lab-page">
     <div class="lab-top">
       <div><div class="eyebrow">CODEWITHHAFIZ DEVELOPER TOOLS</div><h1>Code Lab</h1><p>Create files and folders, write code, and run supported code directly in your browser.</p></div>
-      <div class="lab-top-actions"><button class="secondary" onclick="labNewFolder()">＋ Folder</button><button class="secondary" onclick="labNewFile()">＋ File</button><button class="secondary" onclick="labDownloadFile()">↓ File</button><button class="secondary" onclick="labDownloadProject()">↓ Project</button></div>
+      <div class="lab-top-actions"><button class="secondary" onclick="labNewFolder()">＋ Folder</button><button class="secondary" onclick="labNewFile()">＋ File</button><button class="primary lab-run-top" onclick="labRun()" ${labBusy?'disabled':''}>▶ ${labBusy?'Running...':'Run Code'}</button><button class="secondary" onclick="labDownloadFile()">↓ File</button><button class="secondary" onclick="labDownloadProject()">↓ Project</button></div>
     </div>
     <div class="lab-notice"><b>Browser-powered execution:</b> Python runs through an in-browser Python runtime, so visitors do not need Python or VS Code installed. HTML/CSS/JavaScript can run in the browser too.</div>
     <div class="lab-workspace">
@@ -220,33 +220,63 @@ function codeLab(){
       <section class="lab-editor-panel">
         <div class="lab-editor-head"><span>${labEsc(labCurrent)}</span><span>${labEsc(labLanguage)}</span></div>
         <textarea id="lab-editor" spellcheck="false" oninput="labEditorChanged(this.value)">${labEsc(current)}</textarea>
-        <div class="lab-controls">
-          <button class="primary" onclick="labRun()" ${labBusy?'disabled':''}>▶ ${labBusy?'Running...':'Run Code'}</button>
-          <select onchange="labLanguage=this.value">
-            <option value="python" ${labLanguage==='python'?'selected':''}>Python</option>
-            <option value="javascript" ${labLanguage==='javascript'?'selected':''}>JavaScript</option>
-            <option value="html" ${labLanguage==='html'?'selected':''}>HTML</option>
-            <option value="css" ${labLanguage==='css'?'selected':''}>CSS</option>
-            <option value="cpp" ${labLanguage==='cpp'?'selected':''}>C++</option>
-            <option value="c" ${labLanguage==='c'?'selected':''}>C</option>
-            <option value="java" ${labLanguage==='java'?'selected':''}>Java</option>
-            <option value="php" ${labLanguage==='php'?'selected':''}>PHP</option>
-            <option value="go" ${labLanguage==='go'?'selected':''}>Go</option>
-            <option value="rust" ${labLanguage==='rust'?'selected':''}>Rust</option>
-          </select>
-          <button class="secondary" onclick="labClearOutput()">Clear output</button>
-        </div>
+        
       </section>
       <section class="lab-output-panel">
         <div class="lab-panel-title">OUTPUT / PREVIEW</div>
         <pre id="lab-output">${labOutputText()}</pre>
-        <iframe id="lab-preview-frame" title="Code preview" sandbox="allow-scripts"></iframe>
       </section>
     </div>
   </main>`;
 }
 
-function go(p){state.page=p;render()}function openCourse(id){state.selected=courses.find(c=>c.id===id);state.page='course';render()}function selectLesson(){alert('Lesson selected. Add your lesson video and slides links in app.js.')}function signin(){let e=$('#email').value,p=$('#password').value;if((e==='student@example.com'&&p==='student123')||(e==='admin@codewithhafiz.com'&&p==='Hafiz@123')){state.user=e.split('@')[0];state.page='courses';render()}else alert('Demo login: student@example.com / student123')}function logout(){state.user=null;state.page='courses';render()}function toggleTheme(){state.theme=state.theme==='light'?'dark':'light';document.documentElement.style.setProperty('--bg',state.theme==='dark'?'#111916':'#f7f9f8');document.documentElement.style.setProperty('--surface',state.theme==='dark'?'#19231f':'#fff');document.documentElement.style.setProperty('--text',state.theme==='dark'?'#e7f0eb':'#17211d');render()}function render(){const app=document.getElementById('app'); if(!app) return; let html=state.page==='lab'?codeLab():state.page==='course'?coursePage():state.page==='login'?login():state.page==='dashboard'?dashboard():state.page==='setup'?setup():home(); app.innerHTML=html;}
+
+let learningLessonIndex=0;
+function copyLearningCode(index){
+  const lesson=pythonLessons[index];
+  navigator.clipboard?.writeText(lesson.code).then(()=>alert('Code copied!')).catch(()=>alert('Select and copy the code manually.'));
+}
+function learningPage(){
+  const lesson=pythonLessons[learningLessonIndex]||pythonLessons[0];
+  return `${header()}<main class="learning-page">
+    <div class="learning-hero">
+      <div>
+        <div class="eyebrow">MY LEARNING · PYTHON</div>
+        <h1>Python Basic to Advanced</h1>
+        <p>Learn Python step by step in English, from your first program to advanced project structure. Every lesson includes an explanation and copyable example code.</p>
+      </div>
+      <div class="learning-count"><strong>${pythonLessons.length}</strong><span>lessons</span></div>
+    </div>
+    <div class="learning-layout">
+      <aside class="learning-sidebar">
+        <div class="learning-sidebar-title">PYTHON CURRICULUM</div>
+        ${pythonLessons.map((x,i)=>`<button class="learning-item ${i===learningLessonIndex?'active':''}" onclick="openLearningLesson(${i})"><span>${x.no}. ${x.title}</span><small>›</small></button>`).join('')}
+      </aside>
+      <article class="learning-content">
+        <div class="lesson-kicker">LESSON ${lesson.no} OF ${pythonLessons.length}</div>
+        <h2>${lesson.title}</h2>
+        <p class="learning-desc">${lesson.desc}</p>
+        <div class="learning-section-title">Example</div>
+        <div class="learning-code-head"><span>Python</span><button onclick="copyLearningCode(${learningLessonIndex})">Copy code</button></div>
+        <pre class="learning-code"><code>${labEsc(lesson.code)}</code></pre>
+        <div class="learning-tip"><b>Practice:</b> Copy the example into Code Lab, change the values, run it, and observe the output.</div>
+        <div class="learning-nav">
+          <button class="secondary" ${learningLessonIndex===0?'disabled':''} onclick="openLearningLesson(${learningLessonIndex-1})">← Previous</button>
+          <button class="primary" ${learningLessonIndex===pythonLessons.length-1?'disabled':''} onclick="openLearningLesson(${learningLessonIndex+1})">Next lesson →</button>
+        </div>
+      </article>
+    </div>
+  </main>`;
+}
+function openLearningLesson(index){
+  if(index<0||index>=pythonLessons.length)return;
+  learningLessonIndex=index;
+  state.page='learning';
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function go(p){state.page=p;render()}function openCourse(id){state.selected=courses.find(c=>c.id===id);state.page='course';render()}function selectLesson(){alert('Lesson selected. Add your lesson video and slides links in app.js.')}function signin(){let e=$('#email').value,p=$('#password').value;if((e==='student@example.com'&&p==='student123')||(e==='admin@codewithhafiz.com'&&p==='Hafiz@123')){state.user=e.split('@')[0];state.page='courses';render()}else alert('Demo login: student@example.com / student123')}function logout(){state.user=null;state.page='courses';render()}function toggleTheme(){state.theme=state.theme==='light'?'dark':'light';document.documentElement.style.setProperty('--bg',state.theme==='dark'?'#111916':'#f7f9f8');document.documentElement.style.setProperty('--surface',state.theme==='dark'?'#19231f':'#fff');document.documentElement.style.setProperty('--text',state.theme==='dark'?'#e7f0eb':'#17211d');render()}function render(){const app=document.getElementById('app'); if(!app) return; let html=state.page==='lab'?codeLab():state.page==='course'?coursePage():state.page==='learning'?learningPage():state.page==='login'?login():state.page==='dashboard'?dashboard():state.page==='setup'?setup():home(); app.innerHTML=html;}
 window.go=go; window.openCourse=openCourse; window.selectLesson=selectLesson; window.signin=signin; window.logout=logout; window.toggleTheme=toggleTheme; window.render=render;
-window.labNewFile=labNewFile; window.labNewFolder=labNewFolder; window.labDeleteFile=labDeleteFile; window.labRenameFile=labRenameFile; window.labSelectFile=labSelectFile; window.labEditorChanged=labEditorChanged; window.labRun=labRun; window.labClearOutput=labClearOutput; window.labDownloadFile=labDownloadFile; window.labDownloadProject=labDownloadProject;
+window.labNewFile=labNewFile; window.labNewFolder=labNewFolder; window.labDeleteFile=labDeleteFile; window.labRenameFile=labRenameFile; window.labSelectFile=labSelectFile; window.labEditorChanged=labEditorChanged; window.labRun=labRun; window.labClearOutput=labClearOutput; window.labDownloadFile=labDownloadFile; window.labDownloadProject=labDownloadProject; window.openLearningLesson=openLearningLesson; window.copyLearningCode=copyLearningCode;
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',render);}else{render();}

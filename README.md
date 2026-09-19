@@ -1,7 +1,2 @@
 # CodewithHafiz
-
-GitHub Pages-ready frontend for the CodewithHafiz online learning website.
-
-## Demo login
-- Email: student@example.com
-- Password: student123
+Static GitHub Pages website with the added Code Lab and Python Basic-to-Advanced My Learning curriculum.

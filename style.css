@@ -8,3 +8,37 @@
 .lab-page{max-width:1350px;margin:auto;padding:36px 24px 60px}.lab-top{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:18px}.lab-top h1{font-size:38px;margin:9px 0 7px}.lab-top p{color:var(--muted);font-size:13px;margin:0}.lab-top-actions{display:flex;gap:8px;flex-wrap:wrap}.lab-notice{background:#e8f5ec;border:1px solid #cfe6d6;color:#315c49;border-radius:10px;padding:12px 15px;font-size:12px;margin-bottom:14px}.lab-workspace{display:grid;grid-template-columns:220px minmax(0,1.2fr) minmax(290px,.8fr);min-height:650px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#111a16;box-shadow:var(--shadow)}.lab-sidebar{background:#17241f;color:#d7e6de;padding:15px 10px;border-right:1px solid #2a3933}.lab-sidebar-title{font-size:10px;letter-spacing:1.5px;color:#87a69a;padding:4px 9px 13px}.lab-project{font-size:12px;font-weight:700;padding:9px;border-radius:7px;background:#20362d;margin-bottom:6px}.lab-file{display:flex;align-items:center;justify-content:space-between;gap:4px;padding:8px 9px;border-radius:7px;color:#b8cbc2;font:12px/1.2 monospace;cursor:pointer;margin:2px 0}.lab-file:hover{background:#20362d}.lab-file.selected{background:#285447;color:white}.lab-file.folder{cursor:default;color:#9fc1b0}.lab-file-actions{display:flex;gap:2px}.lab-file-actions button{background:transparent;color:inherit;padding:1px 4px;font-size:12px}.lab-editor-panel,.lab-output-panel{min-width:0;display:flex;flex-direction:column;background:#0f1714}.lab-editor-panel{border-right:1px solid #2a3933}.lab-editor-head,.lab-panel-title{height:43px;display:flex;align-items:center;justify-content:space-between;padding:0 15px;color:#a9bbb3;font:11px monospace;border-bottom:1px solid #26352f}.lab-editor-head span:last-child{color:#6fb593;text-transform:uppercase}.lab-editor-panel textarea{flex:1;resize:none;border:0;outline:0;background:#0d1411;color:#dbe9e2;padding:18px;font:13px/1.65 Consolas,Monaco,monospace;tab-size:4;min-height:500px}.lab-controls{display:flex;gap:8px;align-items:center;padding:11px;border-top:1px solid #26352f;background:#14201b}.lab-controls .primary{padding:9px 13px}.lab-controls .secondary,.lab-controls select{background:#1d2b25;border:1px solid #33453d;color:#c9d9d2;padding:8px 10px;border-radius:7px;font-size:11px}.lab-output-panel{background:#101815}.lab-output-panel pre{margin:0;padding:15px;min-height:200px;max-height:290px;overflow:auto;color:#cce1d6;font:12px/1.6 Consolas,Monaco,monospace;white-space:pre-wrap;word-break:break-word}.lab-muted{color:#6f857a}.lab-output-panel iframe{width:calc(100% - 20px);height:300px;margin:10px;border:1px solid #2b3b34;border-radius:8px;background:white}
 @media(max-width:1050px){.lab-workspace{grid-template-columns:190px 1fr}.lab-output-panel{grid-column:1/-1;border-top:1px solid #2a3933}.lab-output-panel iframe{height:280px}.lab-output-panel pre{max-height:220px}}
 @media(max-width:700px){.lab-page{padding:25px 12px 45px}.lab-top{display:block}.lab-top-actions{margin-top:15px}.lab-teaser{display:block}.lab-teaser .primary{margin-top:15px}.lab-workspace{grid-template-columns:1fr}.lab-sidebar{border-right:0;border-bottom:1px solid #2a3933;max-height:210px;overflow:auto}.lab-editor-panel{border-right:0}.lab-editor-panel textarea{min-height:420px}.lab-output-panel{grid-column:auto}.lab-controls{flex-wrap:wrap}}
+
+/* Code Lab refinements */
+.lab-top-actions{align-items:center}
+.lab-run-top{min-width:112px}
+.lab-workspace{grid-template-columns:220px minmax(0,1fr) minmax(280px,.65fr)}
+.lab-output-panel pre{min-height:0;max-height:none;flex:1}
+.lab-output-panel{min-height:0}
+.lab-controls{display:none!important}
+.lab-output-panel iframe{display:none!important}
+
+/* My Learning */
+.learning-page{max-width:1280px;margin:auto;padding:38px 24px 60px}
+.learning-hero{display:flex;justify-content:space-between;align-items:center;gap:25px;margin-bottom:22px}
+.learning-hero h1{font-size:38px;margin:8px 0}
+.learning-hero p{color:var(--muted);font-size:13px;line-height:1.7;max-width:760px;margin:0}
+.learning-count{min-width:110px;height:110px;border:1px solid var(--line);border-radius:16px;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+.learning-count strong{font-size:34px;color:var(--green)}.learning-count span{font-size:11px;color:var(--muted)}
+.learning-layout{display:grid;grid-template-columns:285px minmax(0,1fr);gap:18px;align-items:start}
+.learning-sidebar{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px;box-shadow:var(--shadow);max-height:720px;overflow:auto}
+.learning-sidebar-title{font-size:10px;letter-spacing:1.5px;color:var(--muted);padding:9px 10px 12px}
+.learning-item{width:100%;border:0;background:transparent;color:var(--text);display:flex;align-items:center;justify-content:space-between;text-align:left;padding:10px;border-radius:8px;font-size:11px;line-height:1.35;cursor:pointer}
+.learning-item:hover{background:var(--green-soft)}.learning-item.active{background:var(--green);color:white}.learning-item small{font-size:17px;opacity:.65}
+.learning-content{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:30px;box-shadow:var(--shadow)}
+.lesson-kicker{font-size:10px;letter-spacing:1.4px;color:var(--green);font-weight:800}
+.learning-content h2{font-size:30px;margin:9px 0 10px}.learning-desc{color:var(--muted);font-size:14px;line-height:1.75;margin:0 0 25px;max-width:850px}
+.learning-section-title{font-size:12px;font-weight:800;margin-bottom:7px}
+.learning-code-head{height:38px;background:#17231e;color:#a9c4b7;border:1px solid #2b4036;border-bottom:0;border-radius:9px 9px 0 0;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font:11px monospace}
+.learning-code-head button{background:#23473a;color:#d7eee3;border:1px solid #3b6956;border-radius:6px;padding:5px 9px;cursor:pointer;font-size:10px}
+.learning-code{margin:0;background:#0d1411;color:#dcebe4;border:1px solid #2b4036;border-radius:0 0 9px 9px;padding:18px;overflow:auto;font:13px/1.65 Consolas,Monaco,monospace;white-space:pre}
+.learning-tip{margin-top:15px;padding:12px 14px;border-left:3px solid var(--green);background:var(--green-soft);color:var(--text);font-size:12px;line-height:1.6;border-radius:5px}
+.learning-nav{display:flex;justify-content:space-between;gap:10px;margin-top:25px}
+.learning-nav button:disabled{opacity:.45;cursor:not-allowed}
+@media(max-width:850px){.learning-layout{grid-template-columns:1fr}.learning-sidebar{max-height:280px}.learning-hero{align-items:flex-start}.learning-count{min-width:85px;height:85px}.learning-hero h1{font-size:30px}}
+@media(max-width:700px){.lab-top-actions{margin-top:15px}.lab-workspace{grid-template-columns:1fr}.lab-output-panel{grid-column:auto}.learning-page{padding:25px 12px 45px}.learning-hero{display:block}.learning-count{margin-top:15px}.learning-content{padding:20px}}
