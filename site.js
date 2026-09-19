@@ -241,15 +241,25 @@ function learningPage(){
   return `${header()}<main class="learning-page">
     <div class="learning-hero">
       <div>
-        <div class="eyebrow">MY LEARNING · PYTHON</div>
-        <h1>Python Basic to Advanced</h1>
-        <p>Learn Python step by step in English, from your first program to advanced project structure. Every lesson includes an explanation and copyable example code.</p>
+        <div class="eyebrow">MY LEARNING</div>
+        <h1>My Learning</h1>
+        <p>Your complete learning area. Start with Python Basic to Advanced and move lesson by lesson at your own pace.</p>
       </div>
-      <div class="learning-count"><strong>${pythonLessons.length}</strong><span>lessons</span></div>
+      <div class="learning-count"><strong>01</strong><span>course</span></div>
     </div>
+    <section class="python-course-card">
+      <div class="python-course-icon">Py</div>
+      <div class="python-course-info">
+        <div class="eyebrow">PYTHON COURSE</div>
+        <h2>Python Basic to Advanced</h2>
+        <p>Learn Python in English from the very beginning to advanced concepts. Every lesson has a clear explanation, example code, and practice guidance.</p>
+        <div class="python-course-meta"><span>${pythonLessons.length} Lessons</span><span>Beginner → Advanced</span><span>English</span></div>
+      </div>
+      <button class="primary python-start" onclick="openLearningLesson(0)">Start Learning →</button>
+    </section>
     <div class="learning-layout">
       <aside class="learning-sidebar">
-        <div class="learning-sidebar-title">PYTHON CURRICULUM</div>
+        <div class="learning-sidebar-title">PYTHON BASIC TO ADVANCED · ${pythonLessons.length} LESSONS</div>
         ${pythonLessons.map((x,i)=>`<button class="learning-item ${i===learningLessonIndex?'active':''}" onclick="openLearningLesson(${i})"><span>${x.no}. ${x.title}</span><small>›</small></button>`).join('')}
       </aside>
       <article class="learning-content">
